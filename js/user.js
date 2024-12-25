@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const res = await fetch('https://ghumo-qg2h.onrender.com/auth/user', {
+        const res = await fetch('https://ghumo-qg2h.onrender.com/api/auth/user', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
