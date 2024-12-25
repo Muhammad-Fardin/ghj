@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const res = await fetch('http://localhost:5000/api/auth/user', {
+        const res = await fetch('https://ghumo-qg2h.onrender.com/auth/user', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const newPhone = document.getElementById('phone').value;
             const newState = document.getElementById('state').value;
 
-            const updateRes = await fetch('http://localhost:5000/api/auth/user', {
+            const updateRes = await fetch('https://ghumo-qg2h.onrender.com/api/auth/user', {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,

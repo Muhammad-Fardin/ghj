@@ -6,7 +6,7 @@ if (loginForm) {
     const password = document.getElementById('password').value;
     
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch('https://ghumo-qg2h.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',  // Allow cookies if needed
