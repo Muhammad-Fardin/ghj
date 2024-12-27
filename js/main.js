@@ -2,30 +2,19 @@
 
 // Dropdown on mouse hover
 document.addEventListener("DOMContentLoaded", function () {
-  function toggleNavbarMethod() {
-    const dropdowns = document.querySelectorAll(".navbar .dropdown");
-    if (window.innerWidth > 992) {
-      dropdowns.forEach((dropdown) => {
-        dropdown.addEventListener("mouseover", () => {
-          const toggle = dropdown.querySelector(".dropdown-toggle");
-          toggle.click();
-        });
-        dropdown.addEventListener("mouseout", () => {
-          const toggle = dropdown.querySelector(".dropdown-toggle");
-          toggle.click();
-          toggle.blur();
-        });
-      });
-    } else {
-      dropdowns.forEach((dropdown) => {
-        dropdown.replaceWith(dropdown.cloneNode(true));
-      });
-    }
-  }
+  const toggler = document.querySelector('.navbar-toggler');
+  const collapse = document.querySelector('#navbarCollapse');
 
-  toggleNavbarMethod();
-  window.addEventListener("resize", toggleNavbarMethod);
+  toggler.addEventListener('click', function () {
+      if (collapse.style.display === "block") {
+          collapse.style.display = "none";
+      } else {
+          collapse.style.display = "block";
+      }
+  });
 });
+
+
 
 // Back to top button
 const backToTopButton = document.querySelector(".back-to-top");

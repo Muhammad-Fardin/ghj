@@ -82,72 +82,20 @@
         </div>
     
     <!-- map  -->
-
-
-    <div class="container-fluid py-2">
-        <div class="container pt-3 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
-                <h1>Explore Top Destination</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img loading="lazy" class="img-fluid" src="../img/delhi.jpg" alt="delhi">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Delhi</h5>
-                            <span>100+ Sites</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img loading="lazy" class="img-fluid" src="../img/mumbai.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Mumbai</h5>
-                            <span>100+ Sites & Beaches</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img loading="lazy" class="img-fluid" src="../img/rajasthan.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Rajasthan</h5>
-                            <span>50+ Forts and Monuments</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img loading="lazy" class="img-fluid" src="../img/agra.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Agra</h5>
-                            <span>Go Back To Mughal Era</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img loading="lazy" class="img-fluid" src="../img/Kashmir.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Kashmir</h5>
-                            <span>Scenic Adventures</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img loading="lazy" class="img-fluid" src="../img/Northeast.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">North East</h5>
-                            <span>Nature's Lap</span>
-                        </a>
-                    </div>
-                </div>
+    <div class="container mt-5">
+        <h1 class="text-center">Destinations Near You</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div id="map" style="height: 400px;"></div>
             </div>
         </div>
+    
+        <div id="places" class="mt-4 px-2"></div>
     </div>
+    
+
+    
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
@@ -211,14 +159,16 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD30jytQI7SHrABQZkWdydj3PQUn5T0jXw&libraries=places&callback=initMap" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@google/markerclustererplus@5.1.3/dist/markerclusterer.min.js"></script>
+
 
     <!-- Template Javascript -->
+    <script src="../js/map.js"></script>
     <script src="../js/main.js"></script>
 </body>
 

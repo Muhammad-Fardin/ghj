@@ -9786,3 +9786,17 @@ h6,
   }
 }
 
+
+#map {
+  height: 500px;
+  width: 100%;
+}
+
+/* Apply custom font for better text visibility */
+.map-text {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); /* Shadow for 3D effect */
+  color: #ffffff;
+}
