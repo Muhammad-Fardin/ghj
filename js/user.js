@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         const user = await res.json();
-        console.log(user)
-        
+        console.log(user);
+
         if (!user || !user.username) {
             alert('User data is incomplete or missing.');
             return;
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             "Delhi", "Puducherry", "Ladakh"
         ];
 
-        // Display user info with dropdown for state and input for phone
+        // Render user info form
         document.getElementById('user-info').innerHTML = `
         <div class="container mt-5">
             <div class="row justify-content-center">
@@ -45,12 +45,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div class="card p-4" style="border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                         <div class="card-body">
                             <h4 class="card-title text-center mb-4">Edit Profile</h4>
-
-                            <div class="mb-3" id="username-container" style="text-align: left;">
+                            
+                            <div class="mb-3" style="text-align: left;">
                                 <label for="username" class="form-label">Username:</label>
                                 <input type="text" class="form-control" id="username" value="${user.username}" disabled />
                             </div>
-                            <div class="mb-3" id="user-id-container" style="text-align: left;">
+
+                            <div class="mb-3" style="text-align: left;">
                                 <label for="userid" class="form-label">Userid:</label>
                                 <input type="text" class="form-control" id="userid" value="${user.userId}" disabled />
                             </div>
@@ -65,13 +66,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                             <div class="mb-3" id="state-container" style="text-align: left;">
                                 <label for="state" class="form-label">State:</label>
-                                <div class="input-group">
-                                    <select id="state" class="form-select" disabled>
+                                <div class="input-group d-flex">
+                                    <select id="state" class="form-select" style="max-width: 70%;" disabled>
                                         ${statesAndUTs.map(state => `
                                             <option value="${state}" ${state === user.state ? 'selected' : ''}>${state}</option>
                                         `).join('')}
                                     </select>
-                                    <button id="edit-state" class="btn btn-primary">Edit</button>
+                                    <button id="edit-state" class="btn btn-primary ms-2">Edit</button>
                                 </div>
                             </div>
 
@@ -83,71 +84,74 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
         `;
 
-        // Initialize intl-tel-input AFTER phone input is added
+        // Initialize intl-tel-input
         const phoneInputField = document.querySelector("#phone");
         if (phoneInputField) {
-            const phoneInput = window.intlTelInput(phoneInputField, {
-                initialCountry: "in",
-                separateDialCode: true,
-                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-            });
-        } else {
-            console.error("Phone input not found.");
+            try {
+                window.intlTelInput(phoneInputField, {
+                    initialCountry: "in",
+                    separateDialCode: true,
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                });
+            } catch (error) {
+                console.error("Failed to initialize intl-tel-input:", error);
+            }
         }
 
         const saveBtn = document.getElementById('saveBtn');
-        let isPhoneEdited = false;
-        let isStateEdited = false;
 
-        // Enable Save Button when phone is edited
-        document.getElementById('edit-phone').addEventListener('click', () => {
-            const phoneInput = document.getElementById('phone');
-            phoneInput.disabled = false;
-            phoneInput.addEventListener('input', () => {
-                isPhoneEdited = true;
+        // Enable phone editing
+        const editPhoneBtn = document.getElementById('edit-phone');
+        if (editPhoneBtn) {
+            editPhoneBtn.addEventListener('click', () => {
+                phoneInputField.disabled = false;
                 saveBtn.disabled = false;
             });
-        });
+        }
 
-        // Enable Save Button when state is edited
-        document.getElementById('edit-state').addEventListener('click', () => {
-            const stateInput = document.getElementById('state');
-            stateInput.disabled = false;
-            stateInput.addEventListener('change', () => {
-                isStateEdited = true;
+        // Enable state dropdown editing
+        const editStateBtn = document.getElementById('edit-state');
+        const stateSelect = document.getElementById('state');
+        if (editStateBtn && stateSelect) {
+            editStateBtn.addEventListener('click', () => {
+                stateSelect.disabled = false;
                 saveBtn.disabled = false;
             });
-        });
+        }
 
-        // Save Button Logic
-        saveBtn.addEventListener('click', async () => {
-            const newPhone = document.getElementById('phone').value;
-            const newState = document.getElementById('state').value;
+        // Save button logic
+        if (saveBtn) {
+            saveBtn.addEventListener('click', async () => {
+                const newPhone = phoneInputField.value;
+                const newState = stateSelect.value;
 
-            const updateRes = await fetch('https://ghumo-qg2h.onrender.com/api/auth/user', {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ phone: newPhone, state: newState })
+                try {
+                    const updateRes = await fetch('https://ghumo-qg2h.onrender.com/api/auth/user', {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ phone: newPhone, state: newState })
+                    });
+
+                    const updateResult = await updateRes.json();
+
+                    if (updateRes.ok) {
+                        alert('Profile updated successfully!');
+                        phoneInputField.disabled = true;
+                        stateSelect.disabled = true;
+                        saveBtn.disabled = true;
+                        window.location.reload();
+                    } else {
+                        alert('Failed to update profile: ' + (updateResult.message || 'Unknown error'));
+                    }
+                } catch (error) {
+                    console.error("Error updating profile:", error);
+                    alert('Error updating profile. Please try again.');
+                }
             });
-
-            const updateResult = await updateRes.json();
-
-            if (updateRes.ok) {
-                alert('Profile updated successfully!');
-                document.getElementById('phone').disabled = true;
-                document.getElementById('state').disabled = true;
-                saveBtn.disabled = true;  // Disable button after saving
-                isPhoneEdited = false;
-                isStateEdited = false;
-                window.location.reload();
-            } else {
-                alert('Failed to update profile: ' + (updateResult.message || 'Unknown error'));
-            }
-        });
-
+        }
     } catch (err) {
         console.error('Error fetching user data:', err);
         alert('Failed to load user data. Please try again later.');
