@@ -9,12 +9,12 @@ const mapStyles = [
     { "elementType": "labels.text.stroke", "stylers": [{ "color": "#1a1a1a" }] },
     // Make highways and primary roads a lighter, more visible color
     { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "color": "#888888" }] },
-    { "featureType": "road.primary", "elementType": "geometry", "stylers": [{ "color": "#888888" }] },
+    // { "featureType": "road.primary", "elementType": "geometry", "stylers": [{ "color": "#888888" }] },
     // De-emphasize secondary and tertiary roads with muted colors
-    { "featureType": "road.secondary", "elementType": "geometry", "stylers": [{ "color": "#555555" }] },
-    { "featureType": "road.tertiary", "elementType": "geometry", "stylers": [{ "color": "#444444" }] },
+    // { "featureType": "road.secondary", "elementType": "geometry", "stylers": [{ "color": "#555555" }] },
+    { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#444444" }] },
     // Make residential roads less prominent
-    { "featureType": "road.residential", "elementType": "geometry", "stylers": [{ "color": "#333333" }] },
+    { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#333333" }] },
     // Keep water bodies in black
     { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#000000" }] },
     // Landscape area
@@ -41,7 +41,7 @@ function initMap() {
 function initializeMap(lat, lng) {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: lat, lng: lng },
-        zoom: 12,
+        zoom: 20,
         mapTypeControl: false,
         zoomControl: false,
         streetViewControl: false,
