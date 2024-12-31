@@ -1,9 +1,4 @@
-const socket = io('https://ghj-api.vercel.app:5000', {  // Use HTTPS for secure connection
-  transports: ['websocket', 'polling'],  // Enable fallback for better compatibility
-  reconnection: true,
-  reconnectionAttempts: 5,
-  reconnectionDelay: 1000
-});
+"use strict";
 
 // Toggle Navbar on click
 document.addEventListener("DOMContentLoaded", function () {
