@@ -253,8 +253,8 @@ function scrollToMap() {
     document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-document.getElementById('search-location').addEventListener('input', searchLocation);
-// document.getElementById('search-location').addEventListener('touchstart', searchLocation);
+// document.getElementById('search-location').addEventListener('input', searchLocation);
+document.getElementById('search-location').addEventListener('touchstart', searchLocation);
 // Search for a location within the selected country
 function searchLocation() {
     const searchQuery = document.getElementById('search-location').value;
