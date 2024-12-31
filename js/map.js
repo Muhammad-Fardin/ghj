@@ -113,6 +113,22 @@ document.getElementById('country-select').addEventListener('change', async (even
     }
 });
 
+document.getElementById('country-select').addEventListener('touchstart', async (event) => {
+    selectedCountry = event.target.value;
+    if (selectedCountry) {
+        const response = await fetch(`https://restcountries.com/v3.1/alpha/${selectedCountry}`);
+        const countryData = await response.json();
+
+        const country = countryData[0];
+        const lat = country.latlng[0]; // Latitude
+        const lng = country.latlng[1]; // Longitude
+
+        // Center map on the selected country
+        map.setCenter({ lat: lat, lng: lng });
+        map.setZoom(6); // Adjust zoom level as needed
+    }
+});
+
 function fetchNearbyPlaces(lat, lng) {
     const queries = ['unesco world heritage site', 'historical monument'];
     queries.forEach(query => {
@@ -237,6 +253,8 @@ function scrollToMap() {
     document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+document.getElementById('search-location').addEventListener('input', searchLocation);
+// document.getElementById('search-location').addEventListener('touchstart', searchLocation);
 // Search for a location within the selected country
 function searchLocation() {
     const searchQuery = document.getElementById('search-location').value;

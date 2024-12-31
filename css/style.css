@@ -9857,6 +9857,7 @@ h6,
       align-items: center;
   }
 
+
   /* Ensure the user icon and language are aligned on the right */
   .d-flex {
       display: flex;
@@ -9869,23 +9870,20 @@ h6,
 
   .navbar-brand {
       flex-grow: 1;
-  }
 
-  .navbar-brand h1 {
-    font-size: 16px;
   }
 
   .navbar-toggler {
-    font-size: 15px;
+    font-size: 18px;
     padding: 0;
   }
 
   #user-icon {
-    padding: 0;
+    padding: 4px;
   }
 
   #navbarLangDropdown {
-    padding: 2px;
+    padding: 20px;
   }
   /* Prevent wrapping for small screens */
   .navbar-nav {
