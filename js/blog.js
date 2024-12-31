@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         // Send the blog data via a POST request using Fetch API
-        fetch('https://ghumo-qg2h.onrender.com/api/blog/add', {
+        fetch('https://ghj-api.vercel.app/api/blog/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

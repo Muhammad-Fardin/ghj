@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookTicketsBtn = document.getElementById('bookTicketsBtn');
   
   // Socket.io connection
-  const socket = io('http://127.0.0.1:5000');  // Connect to backend server
+  const socket = io('https://ghj-api.vercel.app:5000');  // Connect to backend server
 
   bookTicketsBtn.addEventListener('click', (event) => {
     if (!token) {

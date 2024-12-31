@@ -1,4 +1,4 @@
-const socket = io('https://ghumo-qg2h.onrender.com:5000', {
+const socket = io('https://ghj-api.vercel.app:5000', {
     transports: ['websocket', 'polling'],  // Fallback in case websocket fails
     reconnection: true,  // Enable automatic reconnection
     reconnectionAttempts: 5,
@@ -95,7 +95,7 @@ function renderGraph(graphData) {
 
 async function fetchMetrics() {
     try {
-        const response = await fetch('https://ghumo-qg2h.onrender.com/api/metrics');
+        const response = await fetch('https://ghj-api.vercel.app/api/metrics');
 
         if (!response.ok) {
             throw new Error('Failed to fetch metrics');

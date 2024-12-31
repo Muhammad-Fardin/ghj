@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const res = await fetch('https://ghumo-qg2h.onrender.com/api/auth/user', {
+        const res = await fetch('https://ghj-api.vercel.app/api/auth/user', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const updatedState = document.getElementById('state').value;
 
             try {
-                const updateRes = await fetch('https://ghumo-qg2h.onrender.com/api/auth/user', {
+                const updateRes = await fetch('https://ghj-api.vercel.app/api/auth/user', {
                     method: 'PUT',
                     headers: {
                         'Authorization': `Bearer ${token}`,

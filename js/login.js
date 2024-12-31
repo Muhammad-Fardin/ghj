@@ -1,4 +1,4 @@
-const socket = io('https://ghumo-qg2h.onrender.com:5000', {  // Use HTTPS for secure connection
+const socket = io('https://ghj-api.vercel.app:5000', {  // Use HTTPS for secure connection
   transports: ['websocket', 'polling'],  // Enable fallback for better compatibility
   reconnection: true,
   reconnectionAttempts: 5,
@@ -14,7 +14,7 @@ if (loginForm) {
     const password = document.getElementById('password').value;
     
     try {
-      const res = await fetch('https://ghumo-qg2h.onrender.com/api/auth/login', {  // Ensure HTTPS for fetch
+      const res = await fetch('https://ghj-api.vercel.app/api/auth/login', {  // Ensure HTTPS for fetch
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',  // Allow cookies (for session-based auth)
