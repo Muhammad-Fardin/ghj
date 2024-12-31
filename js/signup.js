@@ -67,3 +67,4 @@ if (signupForm) {
     }
   });
 }
+

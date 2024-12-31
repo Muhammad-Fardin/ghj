@@ -1,22 +1,16 @@
 "use strict";
 
-// Dropdown on mouse hover
+// Toggle Navbar on click
 document.addEventListener("DOMContentLoaded", function () {
   const toggler = document.querySelector('.navbar-toggler');
   const collapse = document.querySelector('#navbarCollapse');
 
   toggler.addEventListener('click', function () {
-      if (collapse.style.display === "block") {
-          collapse.style.display = "none";
-      } else {
-          collapse.style.display = "block";
-      }
+    collapse.style.display = collapse.style.display === "block" ? "none" : "block";
   });
 });
 
-
-
-// Back to top button
+// Back to Top Button functionality
 const backToTopButton = document.querySelector(".back-to-top");
 
 window.addEventListener("scroll", () => {
@@ -32,176 +26,127 @@ window.addEventListener("scroll", () => {
 
 backToTopButton.addEventListener("click", (e) => {
   e.preventDefault();
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// Date and time picker (requires a date picker library)
+// Date and Time Picker functionality
 document.addEventListener("DOMContentLoaded", function () {
   const dateInputs = document.querySelectorAll(".date input");
   const timeInputs = document.querySelectorAll(".time input");
 
   dateInputs.forEach((input) => {
-    input.addEventListener("focus", () => {
-      input.type = "date";
-    });
-    input.addEventListener("blur", () => {
-      if (!input.value) input.type = "text";
-    });
+    input.addEventListener("focus", () => input.type = "date");
+    input.addEventListener("blur", () => { if (!input.value) input.type = "text"; });
   });
 
   timeInputs.forEach((input) => {
-    input.addEventListener("focus", () => {
-      input.type = "time";
-    });
-    input.addEventListener("blur", () => {
-      if (!input.value) input.type = "text";
-    });
+    input.addEventListener("focus", () => input.type = "time");
+    input.addEventListener("blur", () => { if (!input.value) input.type = "text"; });
   });
 });
 
-// Testimonials carousel (requires a carousel library like OwlCarousel or Swiper)
+// Testimonials Carousel using Swiper.js
 document.addEventListener("DOMContentLoaded", function () {
   const carouselContainer = document.querySelector(".testimonial-carousel");
 
   if (carouselContainer) {
-    // Example using Swiper.js (you'll need to include Swiper library in your project)
     new Swiper(".testimonial-carousel", {
       loop: true,
-      autoplay: {
-        delay: 3000,
-      },
+      autoplay: { delay: 3000 },
       speed: 1500,
       spaceBetween: 30,
       centeredSlides: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
+      pagination: { el: ".swiper-pagination", clickable: true },
       breakpoints: {
-        0: {
-          slidesPerView: 1,
-        },
-        576: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        992: {
-          slidesPerView: 3,
-        },
-      },
+        0: { slidesPerView: 1 },
+        576: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        992: { slidesPerView: 3 }
+      }
     });
   }
 });
 
+// Toggle Login/Signup/Logout buttons based on token
+document.addEventListener('DOMContentLoaded', () => {
+  const token = localStorage.getItem('token');
+  const loginBtn = document.getElementById('login-btn');
+  const signupBtn = document.getElementById('signup-btn');
+  const logoutBtn = document.getElementById('logout-btn');
+  const userBtn = document.getElementById('user-btn');
 
 
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const loginBtn = document.getElementById('login-btn');
-    const signupBtn = document.getElementById('signup-btn');
-    const logoutBtn = document.getElementById('logout-btn');
-    const token = localStorage.getItem('token');
-    const loginBtnMobile = document.getElementById('login-btn-mobile');
-    const signupBtnMobile = document.getElementById('signup-btn-mobile');
-    const logoutBtnMobile = document.getElementById('logout-btn-mobile');
-    const userBtn = document.getElementById('user-btn');
-    const userBtnMobile = document.getElementById('user-btn-mobile');
-
-    // Check token and toggle buttons accordingly
-    if (token) {
-      // If there's a token, show logout and hide login/signup
+  const toggleButtons = (show) => {
+    if (show) {
       logoutBtn.classList.remove('d-none');
       userBtn.classList.remove('d-none');
       loginBtn.classList.add('d-none');
       signupBtn.classList.add('d-none');
-  
-      // For mobile version
-      logoutBtnMobile.classList.remove('d-none');
-      userBtnMobile.classList.remove('d-none');
-      loginBtnMobile.classList.add('d-none');
-      signupBtnMobile.classList.add('d-none');
     } else {
-      // If there's no token, show login/signup and hide logout
       loginBtn.classList.remove('d-none');
       signupBtn.classList.remove('d-none');
       logoutBtn.classList.add('d-none');
       userBtn.classList.add('d-none');
-
-  
-      // For mobile version
-      loginBtnMobile.classList.remove('d-none');
-      signupBtnMobile.classList.remove('d-none');
-      logoutBtnMobile.classList.add('d-none');
-      userBtnMobile.classList.add('d-none');
-
     }
-  
-    // Logout functionality
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        // Remove token on logout
-        localStorage.removeItem('token');
-        // Hide logout and show login/signup
-        logoutBtn.classList.add('d-none');
-        userBtn.classList.add('d-none');
-        loginBtn.classList.remove('d-none');
-        signupBtn.classList.remove('d-none');
-        // Optional: Reload page to apply changes
-        window.location.reload();
+  };
+
+  // Check token and toggle buttons accordingly
+  if (token) {
+    toggleButtons(true);
+  } else {
+    toggleButtons(false);
+  }
+
+  // Logout functionality
+  const handleLogout = (logoutBtnElement) => {
+    localStorage.removeItem('token');
+    toggleButtons(false);
+    window.location.reload();
+  };
+
+  logoutBtn?.addEventListener('click', () => handleLogout(logoutBtn));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const userButton = document.getElementById('user-icon');
+  const token = localStorage.getItem('token');
+
+  if (userButton) {
+      userButton.addEventListener('click', () => {
+          if (token) {
+              // If user is logged in, redirect to the profile page
+              window.location.href = './pages/userpage.html';
+          } else {
+              // If user is not logged in, redirect to the login page
+              window.location.href = './pages/auth/login.html';
+          }
       });
-    }
+  }
+});
+
+// Redirect to login page if not logged in when booking tickets
+document.addEventListener('DOMContentLoaded', () => {
+  const token = localStorage.getItem('token');
+  const bookTicketsBtn = document.getElementById('bookTicketsBtn');
   
-    if (logoutBtnMobile) {
-      logoutBtnMobile.addEventListener('click', () => {
-        // Remove token on logout
-        localStorage.removeItem('token');
-        // Hide logout and show login/signup
-        logoutBtnMobile.classList.add('d-none');
-        loginBtnMobile.classList.remove('d-none');
-        signupBtnMobile.classList.remove('d-none');
-        // Optional: Reload page to apply changes
-        window.location.reload();
-      });
+  // Socket.io connection
+  const socket = io('http://127.0.0.1:5000');  // Connect to backend server
+
+  bookTicketsBtn.addEventListener('click', (event) => {
+    if (!token) {
+      event.preventDefault(); // Prevent default redirection if not logged in
+      window.location.href = './pages/auth/login.html';  // Redirect to login page if not logged in
+    } else {
+      // Emit booking click event to backend with user info and redirect URL
+      const user = JSON.parse(localStorage.getItem('user')); // Get user info from localStorage
+      const userId = user ? user._id : null; // Get user ID if logged in
+      const redirectTo = 'https://asi.paygov.org.in/asi-webapp/#/ticketbooking'; // URL where user is being redirected
+
+      // Emit the booking click event to the backend
+      socket.emit('bookingClick', { userId, redirectTo });
+
+      // Redirect to ASI website if logged in
+      window.open(redirectTo, '_blank');
     }
   });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('token');
-    const bookTicketsBtn = document.getElementById('bookTicketsBtn');
-  
-    // Check if the user is logged in and handle button click
-    bookTicketsBtn.addEventListener('click', (event) => {
-      if (!token) {
-        event.preventDefault();  // Prevent the default behavior (like redirecting)
-        showToast();  // Show the toast if not logged in
-      } else {
-        window.open('https://asi.paygov.org.in/asi-webapp/#/ticketbooking', '_blank');
-      }
-    });
-  
-    // Function to show toast notification
-    function showToast() {
-      // Clear any previous timeout and hide the toast first if it's already visible
-      const toastElement = document.getElementById('loginToast');
-      toastElement.classList.remove('show');
-      
-      // Reflow the toast to ensure it gets shown
-      void toastElement.offsetWidth;
-  
-      // Show the toast (via Bootstrap)
-      toastElement.classList.add('show');
-  
-      // Set the toast to hide after 3 seconds
-      setTimeout(() => {
-        toastElement.classList.remove('show');
-      }, 2000); // Show for 3 seconds
-    }
-  });
-  
-  
- 
+});

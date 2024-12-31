@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog</title>
+    <!-- Link to Bootstrap 4.4.1 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Add Blog</h1>
+        <div id="admin-message" class="d-none">
+            <p>You are not authorized to add a blog. Please contact the administrator.</p>
+        </div>
+        
+        <form id="blog-form" class="d-none">
+            <div class="form-group">
+                <label for="title">Blog Title</label>
+                <input type="text" class="form-control" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="text">Blog Text</label>
+                <textarea class="form-control" id="text" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Image URL (optional)</label>
+                <input type="text" class="form-control" id="image">
+            </div>
+            <div class="form-group">
+                <label for="videoUrl">Video URL (optional)</label>
+                <input type="text" class="form-control" id="videoUrl">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Blog</button>
+        </form>
+        <div id="message" class="mt-3"></div>
+    </div>
+
+    <!-- jQuery and Bootstrap 4.4.1 JavaScript Bundle -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/blog.js"></script>
+</body>
+</html>

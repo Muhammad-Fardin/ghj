@@ -13,15 +13,8 @@
     <link href="img/favicon.png" rel="icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"> -->
-
-
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -63,12 +56,17 @@
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="m-0 text-primary"><span class="text-dark">Ghumo</span>Jaha</h1>
-                </a>
+                <!-- Hamburger (Visible on mobile) -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+    
+                <!-- Logo (Visible on all screens) -->
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">Ghumo</span>Jaha</h1>
+                </a>
+    
+                <!-- Navbar Links (Visible on large screens) -->
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
@@ -77,20 +75,29 @@
                         <a href="pages/place.html" class="nav-item nav-link">Places</a>
                         <a href="pages/contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-
-                    <!-- Login/Signup/Logout Buttons -->
-                    <div class="navbar-nav ml-auto py-0">
-                        <!-- For Mobile Screens (Buttons will be shown when navbar is collapsed) -->
-                        <a href="pages/auth/login.html" id="login-btn-mobile"
-                            class="nav-item nav-link d-lg-none btn btn-success btn-sm ">Login</a>
-                        <a href="pages/auth/signup.html" id="signup-btn-mobile"
-                            class="nav-item nav-link d-lg-none btn btn-primary btn-sm">Signup</a>
-                        <button id="logout-btn-mobile"
-                            class="nav-item nav-link btn btn-danger btn-sm d-lg-none">Logout</button>
-                            <a href="pages/userpage.html" id="user-btn-mobile"
-                            class="nav-item nav-link btn btn-info btn-sm mx-2 d-lg-none">Profile</a>        
-                        </div>
                 </div>
+    
+                <!-- For Mobile (User button and Language outside hamburger) -->
+                <div class="d-flex justify-content-end align-items-center ml-auto">
+                    <!-- User Icon -->
+                    <a href="#" id="user-icon" class="nav-item nav-link">
+                        <img src="img/avatar.png" alt="User" style="width: 40px; height: 40px;"/>
+                    </a>
+    
+                    <!-- Language Changer Dropdown -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarLangDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Lang
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarLangDropdown">
+                            <a class="dropdown-item" href="#">English</a>
+                            <a class="dropdown-item" href="#">Hindi</a>
+                            <a class="dropdown-item" href="#">Punjabi</a>
+                            <a class="dropdown-item" href="#">Tamil</a>
+                        </div>
+                    </div>
+                </div>
+    
             </nav>
         </div>
     </div>
@@ -545,8 +552,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- FontAwesome (for user icon) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
 
 
     <!-- Contact Javascript File -->

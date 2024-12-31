@@ -1,4 +1,12 @@
+const socket = io('https://ghumo-qg2h.onrender.com:5000', {  // Use HTTPS for secure connection
+  transports: ['websocket', 'polling'],  // Enable fallback for better compatibility
+  reconnection: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 1000
+});
+
 const loginForm = document.getElementById('login-form');
+
 if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -6,22 +14,47 @@ if (loginForm) {
     const password = document.getElementById('password').value;
     
     try {
-      const res = await fetch('https://ghumo-qg2h.onrender.com/api/auth/login', {
+      const res = await fetch('https://ghumo-qg2h.onrender.com/api/auth/login', {  // Ensure HTTPS for fetch
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',  // Allow cookies if needed
+        credentials: 'include',  // Allow cookies (for session-based auth)
         body: JSON.stringify({ email, password }),
       });
-  
-      if (!res.ok) throw new Error('Login failed');
+
+      if (!res.ok) throw new Error('Invalid email or password');  // Handle auth errors
       
       const data = await res.json();
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       
-      window.location.href = '../../index.html';
+      // Emit login event to Socket.IO with error handling
+      socket.emit('userLoggedIn', data.user._id, (ack) => {
+        if (ack?.status === 'ok') {
+          console.log('User login acknowledged by server.');
+        } else {
+          console.error('Failed to notify server of login:', ack?.error);
+        }
+      });
+
+      handleLoginSuccess();
     } catch (error) {
-      document.getElementById('error-message').textContent = error.message;
+      document.getElementById('error-message').textContent = error.message || 'Login failed';
     }
   });
 }
+
+function handleLoginSuccess() {
+  const redirectTo = localStorage.getItem('redirectTo') || '../../index.html';
+  localStorage.removeItem('redirectTo');
+  window.location.href = redirectTo;
+}
+
+// Socket Connection Error Handling
+socket.on('connect_error', (err) => {
+  console.error('Socket connection failed:', err.message);
+  document.getElementById('error-message').textContent = 'Realtime connection failed. Try again later.';
+});
+
+socket.on('connect', () => {
+  console.log('Socket connected successfully.');
+});

@@ -48,16 +48,20 @@
         <!-- Topbar End -->
     
     
-        <!-- Navbar Start -->
         <div class="container-fluid position-relative nav-bar p-0">
             <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                    <a href="" class="navbar-brand">
-                        <h1 class="m-0 text-primary"><span class="text-dark">Ghumo</span>Jaha</h1>
-                    </a>
+                    <!-- Hamburger (Visible on mobile) -->
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+        
+                    <!-- Logo (Visible on all screens) -->
+                    <a href="" class="navbar-brand">
+                        <h1 class="m-0 text-primary"><span class="text-dark">Ghumo</span>Jaha</h1>
+                    </a>
+        
+                    <!-- Navbar Links (Visible on large screens) -->
                     <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                         <div class="navbar-nav ml-auto py-0">
                             <a href="../index.html" class="nav-item nav-link">Home</a>
@@ -66,23 +70,33 @@
                             <a href="place.html" class="nav-item nav-link">Places</a>
                             <a href="contact.html" class="nav-item nav-link active">Contact</a>
                         </div>
-    
-                        <!-- Login/Signup/Logout Buttons -->
-                        <div class="navbar-nav ml-auto py-0">
-                            <!-- For Mobile Screens (Buttons will be shown when navbar is collapsed) -->
-                            <a href="./auth/login.html" id="login-btn-mobile"
-                                class="nav-item nav-link d-lg-none btn btn-success btn-sm ">Login</a>
-                            <a href="./auth/signup.html" id="signup-btn-mobile"
-                                class="nav-item nav-link d-lg-none btn btn-primary btn-sm">Signup</a>
-                            <button id="logout-btn-mobile"
-                                class="nav-item nav-link btn btn-danger btn-sm d-lg-none">Logout</button>
-                                <a href="userpage.html" id="user-btn-mobile"
-                                class="nav-item nav-link btn btn-info btn-sm mx-2 d-lg-none">Profile</a>        
-                            </div>
                     </div>
+        
+                    <!-- For Mobile (User button and Language outside hamburger) -->
+                    <div class="d-flex justify-content-end align-items-center ml-auto">
+                        <!-- User Icon -->
+                        <a href="./userpage.html" id="user-icon" class="nav-item nav-link">
+                            <img src="../img/avatar.png" alt="User" style="width: 40px; height: 40px;"/>
+                        </a>
+        
+                        <!-- Language Changer Dropdown -->
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarLangDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Lang
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarLangDropdown">
+                                <a class="dropdown-item" href="#">English</a>
+                                <a class="dropdown-item" href="#">Hindi</a>
+                                <a class="dropdown-item" href="#">Punjabi</a>
+                                <a class="dropdown-item" href="#">Tamil</a>
+                            </div>
+                        </div>
+                    </div>
+        
                 </nav>
             </div>
         </div>
+
     
     <!-- Header Start -->
     <div class="container-fluid page-header">
