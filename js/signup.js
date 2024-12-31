@@ -60,7 +60,7 @@ if (signupForm) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       
-      window.location.href = './auth/login.html';
+      window.location.href = './login.html';
 
     } catch (error) {
       document.getElementById('error-message').textContent = error.message;
