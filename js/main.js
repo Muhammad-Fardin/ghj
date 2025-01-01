@@ -45,26 +45,32 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Testimonials Carousel using Swiper.js
-document.addEventListener("DOMContentLoaded", function () {
-  const carouselContainer = document.querySelector(".testimonial-carousel");
 
-  if (carouselContainer) {
-    new Swiper(".testimonial-carousel", {
-      loop: true,
-      autoplay: { delay: 3000 },
-      speed: 1500,
-      spaceBetween: 30,
-      centeredSlides: true,
-      pagination: { el: ".swiper-pagination", clickable: true },
-      breakpoints: {
-        0: { slidesPerView: 1 },
-        576: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        992: { slidesPerView: 3 }
-      }
-    });
-  }
+// Redirect to login page if not logged in when booking tickets
+document.addEventListener('DOMContentLoaded', () => {
+  const token = localStorage.getItem('token');
+  const bookTicketsBtn = document.getElementById('bookTicketsBtn');
+  
+  // Socket.io connection
+  const socket = io('https://ghj-api.vercel.app:5000');  // Connect to backend server
+
+  bookTicketsBtn.addEventListener('click', (event) => {
+    if (!token) {
+      event.preventDefault(); // Prevent default redirection if not logged in
+      window.location.href = './pages/auth/login.html';  // Redirect to login page if not logged in
+    } else {
+      // Emit booking click event to backend with user info and redirect URL
+      const user = JSON.parse(localStorage.getItem('user')); // Get user info from localStorage
+      const userId = user ? user._id : null; // Get user ID if logged in
+      const redirectTo = 'https://asi.paygov.org.in/asi-webapp/#/ticketbooking'; // URL where user is being redirected
+
+      // Emit the booking click event to the backend
+      socket.emit('bookingClick', { userId, redirectTo });
+
+      // Redirect to ASI website if logged in
+      window.open(redirectTo, '_blank');
+    }
+  });
 });
 
 // Toggle Login/Signup/Logout buttons based on token
@@ -122,31 +128,4 @@ document.addEventListener('DOMContentLoaded', () => {
           }
       });
   }
-});
-
-// Redirect to login page if not logged in when booking tickets
-document.addEventListener('DOMContentLoaded', () => {
-  const token = localStorage.getItem('token');
-  const bookTicketsBtn = document.getElementById('bookTicketsBtn');
-  
-  // Socket.io connection
-  const socket = io('https://ghj-api.vercel.app:5000');  // Connect to backend server
-
-  bookTicketsBtn.addEventListener('click', (event) => {
-    if (!token) {
-      event.preventDefault(); // Prevent default redirection if not logged in
-      window.location.href = './pages/auth/login.html';  // Redirect to login page if not logged in
-    } else {
-      // Emit booking click event to backend with user info and redirect URL
-      const user = JSON.parse(localStorage.getItem('user')); // Get user info from localStorage
-      const userId = user ? user._id : null; // Get user ID if logged in
-      const redirectTo = 'https://asi.paygov.org.in/asi-webapp/#/ticketbooking'; // URL where user is being redirected
-
-      // Emit the booking click event to the backend
-      socket.emit('bookingClick', { userId, redirectTo });
-
-      // Redirect to ASI website if logged in
-      window.open(redirectTo, '_blank');
-    }
-  });
 });

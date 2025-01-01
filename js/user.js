@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             throw new Error('Failed to fetch user data');
         }
 
-        const user = await res.json();
+        const user = await res.json() || localStorage.getItem('user')
 
         if (!user || !user.username) {
             alert('User data is incomplete or missing.');

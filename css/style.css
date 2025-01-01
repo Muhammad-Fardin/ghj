@@ -9895,3 +9895,7 @@ h6,
       justify-content: flex-start; /* Make sure everything is aligned */
   }
 }
+
+#blog-text {
+  font-size: 18px;
+}

@@ -4,99 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghumojaha</title>
+    <title>Blog Post</title>
     <link href="../img/logo.webp" rel="icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: #e5ffda">
     <div class="container-fluid bg-light pt-3 d-none d-lg-block
-    ">
-            <div class="container">
-                <div class="row">
-                    <!-- Contact Information -->
-                    <div class="col-12 col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                        <div class="d-inline-flex align-items-center">
-                            <p><i class="fa fa-envelope mr-2"></i>aabil790@gmail.com</p>
-                            <p class="text-body px-3">|</p>
-                            <p><i class="fa fa-phone-alt mr-2"></i>+91 783-683-5613</p>
-                        </div>
+">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center">
+                        <p><i class="fa fa-envelope mr-2"></i>aabil790@gmail.com</p>
+                        <p class="text-body px-3">|</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+91 783-683-5613</p>
                     </div>
-    
-                    <!-- Login/Signup Buttons -->
-                    <div class="col-12 col-lg-6 text-center text-lg-right">
-                        <div class="d-inline-flex align-items-center">
-                            <a href="./auth/login.html" id="login-btn"
-                                class="btn btn-success btn-sm mx-2 d-none">Login</a>
-                            <a href="./auth/signup.html" id="signup-btn"
-                                class="btn btn-primary btn-sm mx-2 d-none">Signup</a>
-                            <button id="logout-btn" class="btn btn-danger btn-sm mx-2 d-none">Logout</button>
-                            <a href="./userpage.html" id="user-btn"
-                                class="nav-item nav-link btn btn-info btn-sm mx-2 d-none">Profile</a>
-                        </div>
+                </div>
+
+                <div class="col-12 col-lg-6 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center">
+                        <a href="./auth/login.html" id="login-btn"
+                            class="btn btn-success btn-sm mx-2 d-none">Login</a>
+                        <a href="./auth/signup.html" id="signup-btn"
+                            class="btn btn-primary btn-sm mx-2 d-none">Signup</a>
+                        <button id="logout-btn" class="btn btn-danger btn-sm mx-2 d-none">Logout</button>
+                        <a href="userpage.html" id="user-btn"
+                            class="nav-item nav-link btn btn-info btn-sm mx-2 d-none">Profile</a>
                     </div>
                 </div>
             </div>
         </div>
-    
-        <!-- Topbar End -->
-    
-    
-        <div class="container-fluid position-relative nav-bar p-0">
-            <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-                <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                    <!-- Hamburger (Visible on mobile) -->
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-        
-                    <!-- Logo (Visible on all screens) -->
-                    <a href="" class="navbar-brand w-25">
-                        <img id="logo" src="../img/logo.webp" class="w-25" />
+    </div>
+
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <!-- Hamburger (Visible on mobile) -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Logo (Visible on all screens) -->
+                <a href="" class="navbar-brand w-25">
+                    <img id="logo" src="../img/logo.webp" class="w-25" />
+                </a>
+
+                <!-- Navbar Links (Visible on large screens) -->
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="../index.html" class="nav-item nav-link">Home</a>
+                        <a href="blog.html" class="nav-item nav-link">Blogs</a>
+                        <a href="booking.html" class="nav-item nav-link">Booking</a>
+                        <a href="place.html" class="nav-item nav-link">Places</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+
+                <!-- For Mobile (User button and Language outside hamburger) -->
+                <div class="d-flex justify-content-end align-items-center ml-auto">
+                    <!-- User Icon -->
+                    <a href="#" id="user-icon" class="nav-item nav-link">
+                        <img src="../img/avatar.png" alt="User" style="width: 40px; height: 40px;" />
                     </a>
-        
-                    <!-- Navbar Links (Visible on large screens) -->
-                    <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="../index.html" class="nav-item nav-link">Home</a>
-                            <a href="blog.html" class="nav-item nav-link">Blogs</a>
-                            <a href="booking.html" class="nav-item nav-link active">Booking</a>
-                            <a href="place.html" class="nav-item nav-link">Places</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        </div>
-                    </div>
-        
-                    <!-- For Mobile (User button and Language outside hamburger) -->
-                    <div class="d-flex justify-content-end align-items-center ml-auto">
-                        <!-- User Icon -->
-                        <a href="#" id="user-icon" class="nav-item nav-link">
-                            <img src="../img/avatar.png" alt="User" style="width: 40px; height: 40px;"/>
+
+                    <!-- Language Changer Dropdown -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarLangDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Lang
                         </a>
-        
-                        <!-- Language Changer Dropdown -->
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarLangDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Lang
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarLangDropdown">
-                                <a class="dropdown-item" href="#">English</a>
-                                <a class="dropdown-item" href="#">Hindi</a>
-                                <a class="dropdown-item" href="#">Punjabi</a>
-                                <a class="dropdown-item" href="#">Tamil</a>
-                            </div>
+                        <div class="dropdown-menu" aria-labelledby="navbarLangDropdown">
+                            <a class="dropdown-item" href="#">English</a>
+                            <a class="dropdown-item" href="#">Hindi</a>
+                            <a class="dropdown-item" href="#">Punjabi</a>
+                            <a class="dropdown-item" href="#">Tamil</a>
                         </div>
                     </div>
-        
-                </nav>
-            </div>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <div class="container py-5">
+        <h1 id="blog-title" class="text-center mb-3">Loading...</h1>
+        <p id="blog-date" class="text-muted text-center"></p>
+
+        <div class="text-center">
+            <img id="blog-image" src="../img/default-image.jpg" alt="Blog Image" class="img-fluid mb-4"
+                style="max-height: 500px;">
         </div>
 
-        <div>
-            <h1 class="text-center mt-5">Oops, This Page Is Underconstruction.</h1>
+        <div id="blog-text" class="mt-4 px-1 text-dark font-weight-bold">
+            <p class="text-center">Fetching content...</p>
         </div>
+
+        <div class="text-center mt-4" id="blog-video">
+            <!-- <iframe id="blog-video" width="100%" height="500"></iframe> -->
+        </div>
+    </div>
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
@@ -154,15 +170,10 @@
     </div>
     <!-- Footer End -->
 
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Template Javascript -->
     <script src="../js/authButtons.js"></script>
+    <script src="../js/getBlog.js"></script>
 </body>
 
 </html>
