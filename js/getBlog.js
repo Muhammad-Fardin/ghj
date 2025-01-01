@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://localhost:5000/api/blog')
+    fetch('https://ghj-api.vercel.app/api/blog')
         .then(response => response.json())
         .then(data => {
             const container = $('#blog-container');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (blogId) {
         try {
-            const response = await fetch(`http://localhost:5000/api/blog/${blogId}`);
+            const response = await fetch(`https://ghj-api.vercel.app/api/blog/${blogId}`);
             const blog = await response.json();
             console.log(blog)
 
