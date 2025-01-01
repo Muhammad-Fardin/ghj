@@ -4,23 +4,31 @@
 <head>
     <meta charset="utf-8">
     <title>Ghumojaha</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <!-- Favicon -->
     <link href="../img/logo.webp" rel="icon">
+
+    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+
+
+    <!-- Customized Bootstrap Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Topbar Start -->
-
-
     <div class="container-fluid bg-light pt-3 d-none d-lg-block
-    ">
+">
         <div class="container">
             <div class="row">
-                <!-- Contact Information -->
+
                 <div class="col-12 col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
                         <p><i class="fa fa-envelope mr-2"></i>aabil790@gmail.com</p>
@@ -29,14 +37,14 @@
                     </div>
                 </div>
 
-                <!-- Login/Signup Buttons -->
                 <div class="col-12 col-lg-6 text-center text-lg-right">
                     <div class="d-inline-flex align-items-center">
-                        <a href="./auth/login.html" id="login-btn" class="btn btn-success btn-sm mx-2 d-none">Login</a>
+                        <a href="./auth/login.html" id="login-btn"
+                            class="btn btn-success btn-sm mx-2 d-none">Login</a>
                         <a href="./auth/signup.html" id="signup-btn"
                             class="btn btn-primary btn-sm mx-2 d-none">Signup</a>
                         <button id="logout-btn" class="btn btn-danger btn-sm mx-2 d-none">Logout</button>
-                        <a href="./userpage.html" id="user-btn"
+                        <a href="userpage.html" id="user-btn"
                             class="nav-item nav-link btn btn-info btn-sm mx-2 d-none">Profile</a>
                     </div>
                 </div>
@@ -65,7 +73,7 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <a href="../index.html" class="nav-item nav-link">Home</a>
-                        <a href="blog.html" class="nav-item nav-link active">Blogs</a>
+                        <a href="blog.html" class="nav-item nav-link">Blogs</a>
                         <a href="booking.html" class="nav-item nav-link">Booking</a>
                         <a href="place.html" class="nav-item nav-link">Places</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -96,6 +104,7 @@
             </nav>
         </div>
     </div>
+    <!-- Navbar End -->
 
     <!-- Header Start -->
     <div class="container-fluid page-header">
@@ -109,16 +118,19 @@
 
 
     <!-- Blog Start -->
-    <div class="container mt-5">
-        <div class="row" id="blog-container">
-            <!-- Places will be dynamically inserted here -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row pb-3" id="blog-container"></div>
+                    
+                </div>
+            </div>
         </div>
     </div>
+    
 
-   
-
-    <!-- Blog End -->
-
+                    
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
@@ -153,10 +165,13 @@
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Terms and
                         Conditions</a>
+                    <!-- <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a> -->
+                    <!-- <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a> -->
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+                <!-- <p><i class="fa fa-map-marker-alt mr-2"></i></p> -->
                 <p><i class="fa fa-phone-alt mr-2"></i>+91 783-683-5613</p>
                 <p><i class="fa fa-envelope mr-2"></i>aabil790@gmail.com</p>
             </div>
@@ -174,10 +189,15 @@
     <!-- Footer End -->
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- Template Javascript -->
     <script src="../js/authButtons.js"></script>
     <script src="../js/getBlog.js"></script>
+
 </body>
 
 </html>

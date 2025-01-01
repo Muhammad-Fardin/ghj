@@ -9859,7 +9859,7 @@ h6,
 
 
   /* Ensure the user icon and language are aligned on the right */
-  .navbar .d-flex {
+  .d-flex {
       display: flex;
       align-items: center;
   }

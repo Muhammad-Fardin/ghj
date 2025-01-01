@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('https://ghj-api.vercel.app/api/blog')
+    fetch('http://localhost:5000/api/blog')
         .then(response => response.json())
         .then(data => {
             const container = $('#blog-container');
             container.empty();
             data.forEach(blog => {
                 const blogItem = `
-                <div class="col-12 col-sm-6 col-md-4 mb-4 pb-2">
-                    <div class="blog-item d-flex flex-column">
-                        <div class="position-relative flex-grow-1">
-                            <img class="img-fluid w-100" src="${blog.image}" alt="img" style="object-fit: cover; height: 250px;">
+                <div class="col-md-4 mb-4 pb-2">
+                    <div class="blog-item">
+                        <div class="position-relative">
+                            <img class="img-fluid w-100 h-100" src="${blog.image}" alt="img" style="object-fit: cover;">
                             <div class="blog-date">
                                 <h6 class="font-weight-bold mb-n1">${new Date(blog.createdAt).getDate()}</h6>
                                 <small class="text-white text-uppercase">${new Date(blog.createdAt).toLocaleString('default', { month: 'short' })}</small>
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>`;
+
                 container.append(blogItem);
             });
         });
 });
-
 
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (blogId) {
         try {
-            const response = await fetch(`https://ghj-api.vercel.app/api/blog/${blogId}`);
+            const response = await fetch(`http://localhost:5000/api/blog/${blogId}`);
             const blog = await response.json();
             console.log(blog)
 
@@ -51,11 +51,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (blog.videoUrl) {
                     // Extract the YouTube video ID from the URL
                     const videoId = blog.videoUrl.split('v=')[1]?.split('&')[0];
-                
+
                     if (videoId) {
                         // Construct the embed URL
                         const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-                
+
                         // Create iframe element and set attributes
                         const iframe = document.createElement('iframe');
                         iframe.setAttribute('width', '100%');
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         iframe.setAttribute('frameborder', '0');
                         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
                         iframe.setAttribute('allowfullscreen', 'true');
-                
+
                         // Add the iframe to the blog-video container
                         blogVideo.innerHTML = ''; // Clear previous content if any
                         blogVideo.appendChild(iframe);
-                
+
                         // Display the video container
                         blogVideo.style.display = 'block';
                     } else {
