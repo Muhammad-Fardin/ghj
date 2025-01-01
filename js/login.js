@@ -16,7 +16,7 @@ if (loginForm) {
     try {
       const res = await fetch('https://ghj-api.vercel.app/api/auth/login', {  // Ensure HTTPS for fetch
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Credentials': 'true' },
         credentials: 'include',  // Allow cookies (for session-based auth)
         body: JSON.stringify({ email, password }),
       });
@@ -44,9 +44,8 @@ if (loginForm) {
 }
 
 function handleLoginSuccess() {
-  const redirectTo = localStorage.getItem('redirectTo') || '../../index.html';
-  localStorage.removeItem('redirectTo');
-  window.location.href = redirectTo;
+
+  window.location.href = '../../index.html';
 }
 
 // Socket Connection Error Handling

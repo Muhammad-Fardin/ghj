@@ -9859,7 +9859,7 @@ h6,
 
 
   /* Ensure the user icon and language are aligned on the right */
-  .d-flex {
+  .navbar .d-flex {
       display: flex;
       align-items: center;
   }
@@ -9899,3 +9899,21 @@ h6,
 #blog-text {
   font-size: 18px;
 }
+
+#placesContainer .card {
+            display: flex;
+            flex-direction: column;
+        }
+#placesContainer .card img {
+            object-fit: cover;
+            height: 250px; /* Fixed height for all images */
+            width: 100%; /* Ensure all images stretch to fill the card width */
+        }
+#placesContainer .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        

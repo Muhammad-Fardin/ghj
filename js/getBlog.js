@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
             container.empty();
             data.forEach(blog => {
                 const blogItem = `
-                <div class="col-12 col-md-4 mb-4 pb-2">
-                    <div class="blog-item d-flex flex-column h-100">
+                <div class="col-12 col-sm-6 col-md-4 mb-4 pb-2">
+                    <div class="blog-item d-flex flex-column">
                         <div class="position-relative flex-grow-1">
-                            <img class="img-fluid w-100 h-100" src="${blog.image}" alt="img" style="object-fit: cover;">
+                            <img class="img-fluid w-100" src="${blog.image}" alt="img" style="object-fit: cover; height: 250px;">
                             <div class="blog-date">
                                 <h6 class="font-weight-bold mb-n1">${new Date(blog.createdAt).getDate()}</h6>
                                 <small class="text-white text-uppercase">${new Date(blog.createdAt).toLocaleString('default', { month: 'short' })}</small>
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>`;
-
                 container.append(blogItem);
             });
         });
 });
+
 
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);

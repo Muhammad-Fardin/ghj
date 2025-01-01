@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
@@ -54,12 +55,12 @@
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+    
                 <!-- Logo (Visible on all screens) -->
                 <a href="" class="navbar-brand w-25">
                     <img id="logo" src="../img/logo.webp" class="w-25" />
                 </a>
-
+    
                 <!-- Navbar Links (Visible on large screens) -->
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
@@ -70,18 +71,17 @@
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
-
+    
                 <!-- For Mobile (User button and Language outside hamburger) -->
                 <div class="d-flex justify-content-end align-items-center ml-auto">
                     <!-- User Icon -->
                     <a href="#" id="user-icon" class="nav-item nav-link">
-                        <img src="../img/avatar.png" alt="User" style="width: 40px; height: 40px;" />
+                        <img src="../img/avatar.png" alt="User" style="width: 40px; height: 40px;"/>
                     </a>
-
+    
                     <!-- Language Changer Dropdown -->
                     <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarLangDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" id="navbarLangDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Lang
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarLangDropdown">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-
+    
             </nav>
         </div>
     </div>
@@ -109,23 +109,13 @@
 
 
     <!-- Blog Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row" id="blog-container"></div>
-                <div class="mb-5">
-                    <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Tag Cloud</h4>
-                    <div class="d-flex flex-wrap m-n1">
-                        <a href="" class="btn btn-light m-1">Travelling</a>
-                        <a href="" class="btn btn-light m-1">Tour</a>
-                        <a href="" class="btn btn-light m-1">Ticket Booking</a>
-                        <a href="" class="btn btn-light m-1">Tour Package</a>
-                        <a href="" class="btn btn-light m-1">Travel</a>
-                        <a href="" class="btn btn-light m-1">Destinations</a>
-                    </div>
-                </div>
-            </div>
+    <div class="container mt-5">
+        <div class="row" id="blog-container">
+            <!-- Places will be dynamically inserted here -->
         </div>
     </div>
+
+   
 
     <!-- Blog End -->
 

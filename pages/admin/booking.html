@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Place</title>
+    <link href="../../img/logo.webp" rel="icon">
+    <!-- Link to Bootstrap 4.4.1 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css//style.css" rel="stylesheet"></link>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Add New Booking Place</h1>
+        <form id="addPlaceForm" class="mt-4">
+            <div class="mb-3">
+                <label for="placeName" class="form-label">Place Name</label>
+                <input type="text" class="form-control" id="placeName" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" required>
+            </div>
+            <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image URL</label>
+                <input type="url" class="form-control" id="imageUrl" required>
+            </div>
+            <div class="mb-3">
+                <label for="bookingUrl" class="form-label">Booking URL</label>
+                <input type="url" class="form-control" id="bookingUrl" required>
+            </div>
+            <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <input type="number" class="form-control" id="rating" min="0" max="5" step="0.1" required>
+            </div>
+            <div class="mb-3">
+                <label for="aboutUrl" class="form-label">About URL (optional)</label>
+                <input type="url" class="form-control" id="aboutUrl">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Place</button>
+        </form>
+    </div>
+
+    <!-- jQuery and Bootstrap 4.4.1 JavaScript Bundle -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/addBooking.js"></script>
+</body>
+</html>
