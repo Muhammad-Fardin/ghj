@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
             li.innerHTML = `
                 <a href="${item._id}" target="_blank">${item._id}</a>
-                <span class="badge click-count bg-secondary rounded-pill">${item.count}</span>
+                <span class="badge click-count rounded-pill">${item.count}</span>
             `;
             list.appendChild(li);
         });
