@@ -17,7 +17,7 @@
                 <div class="card text-white bg-primary mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Active Users</h5>
-                        <p class="card-text" id="active-users">0</p>
+                        <p class="card-text" id="active-users">0</p> <!-- Make sure this id matches the JavaScript -->
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class="card text-white bg-success mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Logged In Users</h5>
-                        <p class="card-text" id="logged-in-users">0</p>
+                        <p class="card-text" id="logged-in-users">0</p> <!-- Make sure this id matches the JavaScript -->
                     </div>
                 </div>
             </div>
@@ -33,32 +33,24 @@
                 <div class="card text-white bg-warning mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Booking Button Clicks</h5>
-                        <p class="card-text" id="booking-clicks-count">0</p>
+                        <p class="card-text" id="booking-clicks">0</p> <!-- Updated id to match JS -->
                         <div id="booking-clicks-list"></div>  <!-- New div to list booking click details -->
                     </div>
                 </div>
             </div>
-            
         </div>
 
-        <!-- Graph Section -->
         <div class="mt-4">
-            <h4>Clicks Over Time</h4>
-            <canvas id="clicks-graph" height="100"></canvas>
-            <div class="mt-3">
-                <h5>Redirect URLs</h5>
-                <ul id="redirect-urls" class="list-group"></ul>
-            </div>
-        </div>
-
-        <!-- Add Blog Button -->
-        <div class="mt-4 text-center">
-            <button class="btn btn-primary" id="add-blog-btn" onclick="toBlog()">Add Blog</button>
+            <h4>Booking URLs Clicks</h4>
+            <ul id="redirect-urls" class="list-group"></ul>
         </div>
     </div>
 
+ 
+    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 

@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    const socket = io('https://ghj-api.vercel.app');  // Adjust URL if needed
+
     try {
         const response = await fetch('https://ghj-api.vercel.app/api/places/');
         const places = await response.json();
-        console.log(places)
+        console.log(places);
         const container = document.getElementById('placesContainer');
-
 
         places.forEach(place => {
             const placeCard = document.createElement('div');
@@ -16,12 +17,33 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <h5 class="card-title">${place.name}</h5>
                         <p class="card-text">Location: ${place.location}</p>
                         <p class="card-text">Rating: ${place.rating} &#9733;</p>
-                        <a href="${place.bookingUrl}" class="btn btn-primary w-100" target="_blank">Book Now</a>
-                        <a href="${place.aboutUrl || '#'}" class="btn btn-secondary w-100 mt-2" ${place.aboutUrl ? '' : 'disabled'} target="_blank">Know More</a>
+                        <a href="${place.bookingUrl}" 
+                           class="btn btn-primary w-100 booking-btn" 
+                           data-url="${place.bookingUrl}" 
+                           target="_blank">Book Now</a>
+                        <a href="${place.aboutUrl || '#'}" 
+                           class="btn btn-secondary w-100 mt-2" 
+                           ${place.aboutUrl ? '' : 'disabled'} 
+                           target="_blank">Know More</a>
                     </div>
                 </div>
             `;
             container.appendChild(placeCard);
+        });
+
+        // Add click listener for booking buttons
+        container.addEventListener('click', (e) => {
+            if (e.target.classList.contains('booking-btn')) {
+                const bookingUrl = e.target.dataset.url;
+                const userId = localStorage.getItem('userId') || 'guest';
+                
+                // Emit the click event
+                socket.emit('bookingClick', {
+                    userId,
+                    redirectTo: bookingUrl,
+                    timestamp: new Date()
+                });
+            }
         });
 
     } catch (error) {
