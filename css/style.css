@@ -9850,12 +9850,12 @@ h6,
 /* For mobile below 471px */
 @media (max-width: 510px) {
   /* Keep navbar items on the same line */
-  .navbar-collapse {
+  /* .navbar-collapse {
       display: flex;
-      flex-wrap: nowrap !important; /* Prevent wrapping */
+      flex-wrap: nowrap !important; 
       justify-content: flex-start;
       align-items: center;
-  }
+  } */
 
 
   /* Ensure the user icon and language are aligned on the right */
@@ -9864,9 +9864,6 @@ h6,
       align-items: center;
   }
 
-  .navbar-toggler {
-      order: -1; /* Position the hamburger before the logo */
-  }
 
   .navbar-brand {
       flex-grow: 1;
@@ -9874,8 +9871,8 @@ h6,
   }
 
   .navbar-toggler {
-    font-size: 18px;
-    padding: 0;
+    font-size: 20px;
+    padding: 2px;
   }
 
   #user-icon {
@@ -9884,6 +9881,7 @@ h6,
 
   #navbarLangDropdown {
     padding: 20px;
+    margin: 5px;
   }
   /* Prevent wrapping for small screens */
   .navbar-nav {

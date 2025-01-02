@@ -1,34 +1,52 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // Check if the user has admin rights before proceeding
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        window.location.href = '/';
+        return;
+    }
+
+    // Admin Check - Redirect if not admin
+    const response = await fetch('https://ghj-api.vercel.app/api/admin/check-admin', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    const data = await response.json();
+
+    if (!data.isAdmin) {
+        alert('Access denied. Admin privileges required.');
+        window.location.href = '/';
+        return;
+    }
+
+    // Create Navbar
+    createNavbar();
 
     // Your existing code continues here...
-    
-    const socket = io('https://ghj-api.vercel.app:5000', {
+
+    const socket = io('https://ghj-api.vercel.app', {
         transports: ['websocket', 'polling'],  // Fallback in case websocket fails
-        reconnection: true,  // Enable automatic reconnection
+        reconnection: true,
         reconnectionAttempts: 5,
         reconnectionDelay: 1000
     });
 
-    // Listen for active user updates
     socket.on('activeUsers', (count) => {
         updateMetric('active-users', count);
     });
 
-    // Listen for the updated booking click count from the backend
     socket.on('bookingClickCountUpdated', (count) => {
-        // Update the booking click count on the frontend
         const bookingClicksEl = document.getElementById('booking-clicks-count');
         if (bookingClicksEl) {
             bookingClicksEl.textContent = count;
         }
     });
 
-    // Handle booking click updates
     socket.on('bookingClickLogged', (data) => {
         const bookingClicksList = document.getElementById('booking-clicks-list');
-
-        // Add new booking click to the list of clicks
         if (bookingClicksList) {
             const div = document.createElement('div');
             div.classList.add('booking-click-item');
@@ -41,24 +59,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // Listen for logged-in user count
     socket.on('loggedInUsers', (count) => {
         updateMetric('logged-in-users', count);
     });
 
-    // Booking Button Click - Emit Event
-    const bookTicketsBtn = document.getElementById('bookTicketsBtn');
-    if (bookTicketsBtn) {
-        bookTicketsBtn.addEventListener('click', () => {
-            const userId = getUserId();  // Assume function to fetch logged-in user ID
-            const redirectTo = 'https://asi.paygov.org.in/asi-webapp/#/ticketbooking';
-
-            // Emit booking click only if user is logged in
-            if (userId) {
-                socket.emit('bookingClick', { userId, redirectTo });
-            }
-        });
-    }
 
     async function fetchMetrics() {
         try {
@@ -70,22 +74,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const data = await response.json();
 
-            // Update basic metrics (Active Users, Logged-In Users, etc.)
             updateMetric('active-users', data.activeUsers);
             updateMetric('logged-in-users', data.loggedInUsers);
-            updateMetric('booking-clicks', data.bookingClicks);  // Display count of clicks
+            updateMetric('booking-clicks', data.bookingClicks);
 
-            // Render the graph if graph data is valid
             if (Array.isArray(data.graphData)) {
-                renderGraph(data.graphData);  // Render the graph with data
+                renderGraph(data.graphData);
             } else {
                 console.error('Invalid graph data:', data.graphData);
             }
 
-            // Check if bookingClickDetails is an array before calling forEach
             const bookingClicksList = document.getElementById('booking-clicks-list');
             if (bookingClicksList) {
-                bookingClicksList.innerHTML = '';  // Clear the previous list
+                bookingClicksList.innerHTML = '';
 
                 if (Array.isArray(data.bookingClickDetails)) {
                     data.bookingClickDetails.forEach(click => {
@@ -117,5 +118,37 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function toBlog() {
         window.location.href = './blog.html';
+    }
+
+    function createNavbar() {
+        const navbar = document.createElement('nav');
+        navbar.classList.add('navbar', 'navbar-expand-lg', 'navbar-light', 'bg-light');
+        navbar.innerHTML = `
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Ghumojaha</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./blog.html">Add Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./booking.html">Add Place</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+        `;
+        document.body.prepend(navbar);
     }
 });
