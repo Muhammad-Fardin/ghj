@@ -56,10 +56,8 @@ if (signupForm) {
       if (!res.ok) throw new Error('Signup failed');
       
       const data = await res.json();
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
       
-      window.location.href = '../index.html';
+      window.location.href = './login.html';
 
     } catch (error) {
       document.getElementById('error-message').textContent = error.message;

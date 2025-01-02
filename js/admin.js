@@ -25,44 +25,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Create Navbar
     createNavbar();
 
-    // Your existing code continues here...
-
-    const socket = io('https://ghj-api.vercel.app', {
-        transports: ['websocket', 'polling'],  // Fallback in case websocket fails
-        reconnection: true,
-        reconnectionAttempts: 5,
-        reconnectionDelay: 1000
-    });
-
-    socket.on('activeUsers', (count) => {
-        updateMetric('active-users', count);
-    });
-
-    socket.on('bookingClickCountUpdated', (count) => {
-        const bookingClicksEl = document.getElementById('booking-clicks-count');
-        if (bookingClicksEl) {
-            bookingClicksEl.textContent = count;
-        }
-    });
-
-    socket.on('bookingClickLogged', (data) => {
-        const bookingClicksList = document.getElementById('booking-clicks-list');
-        if (bookingClicksList) {
-            const div = document.createElement('div');
-            div.classList.add('booking-click-item');
-            div.innerHTML = `
-                <strong>User:</strong> ${data.userId.username || 'Unknown'} <br>
-                <strong>Redirect URL:</strong> ${data.redirectTo} <br>
-                <strong>Time:</strong> ${new Date(data.timestamp).toLocaleString()}
-            `;
-            bookingClicksList.appendChild(div);
-        }
-    });
-
-    socket.on('loggedInUsers', (count) => {
-        updateMetric('logged-in-users', count);
-    });
-
 
     async function fetchMetrics() {
         try {

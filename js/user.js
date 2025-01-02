@@ -83,13 +83,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         `;
 
-        // Attach Logout Event
-        // const logoutBtn = document.getElementById('logout-btn');
-        // logoutBtn.addEventListener('click', () => {
-        //     localStorage.removeItem('token');
-        //     window.location.href = './index.html';
-        // });
-
 
 
         // Initialize intl-tel-input
