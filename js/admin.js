@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     createNavbar();
 
     const socket = io('wss://ghj-api.vercel.app', {
-        transports: 'websocket',
+        transports: ['websocket', 'polling'],
         path: '/socket.io/'
     });  // Change to live URL if necessary
 
