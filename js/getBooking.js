@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const socket = io('https://ghj-api.vercel.app');  // Adjust URL if needed
+    const socket = io('wss://ghj-api.vercel.app', {
+        transports: ['websocket', 'polling'],
+        path: '/socket.io/'
+    });
 
     try {
         const response = await fetch('https://ghj-api.vercel.app/api/places/');
